@@ -1,6 +1,6 @@
-﻿name: AI Code Reviewer
-description: Automatically reviews pull requests using Claude AI
-author: pentiumcity
+name: SankaDev425 Claude PR Reviewer
+description: Automated GitHub pull request reviews with Claude, posting inline comments on changed lines.
+author: sanka-dev425
 
 inputs:
   github_token:
