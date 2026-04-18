@@ -1,0 +1,8 @@
+node_modules/
+build/
+coverage/
+.npm-cache/
+*.tgz
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,54 @@
+{
+  "name": "ai-code-reviewer",
+  "version": "1.0.0",
+  "description": "Automatically reviews pull requests using Claude AI",
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "action.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc && ncc build src/index.ts -o dist --minify",
+    "test": "vitest run --pool=threads",
+    "test:coverage": "vitest run --pool=threads --coverage --coverage.provider=v8 --coverage.reporter=text --coverage.reporter=lcov --coverage.include=src/**/*.ts --coverage.exclude=src/index.ts --coverage.thresholds.lines=82 --coverage.thresholds.functions=90 --coverage.thresholds.branches=65 --coverage.thresholds.statements=82",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.yml\" \"*.md\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.yml\" \"*.md\"",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build && npm audit --audit-level=high"
+  },
+  "keywords": [
+    "github-action",
+    "code-review",
+    "claude",
+    "anthropic",
+    "pull-request",
+    "typescript"
+  ],
+  "author": "Pentiumcity",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@actions/core": "^3.0.0",
+    "@actions/github": "^9.1.0",
+    "@anthropic-ai/sdk": "^0.24.0",
+    "minimatch": "^9.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vercel/ncc": "^0.38.3",
+    "@vitest/coverage-v8": "^4.1.4",
+    "eslint": "^8.57.1",
+    "prettier": "^3.5.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.8.3",
+    "vitest": "^4.1.4"
+  }
+}

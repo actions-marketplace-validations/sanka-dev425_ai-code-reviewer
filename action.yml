@@ -1,0 +1,39 @@
+﻿name: AI Code Reviewer
+description: Automatically reviews pull requests using Claude AI
+author: pentiumcity
+
+inputs:
+  github_token:
+    description: GitHub token for posting comments
+    required: true
+  anthropic_api_key:
+    description: Anthropic Claude API key
+    required: true
+  model:
+    description: Claude model to use
+    required: false
+    default: claude-sonnet-4-20250514
+  review_level:
+    description: "Options: quick | standard | deep"
+    required: false
+    default: standard
+  ignore_patterns:
+    description: Comma-separated glob patterns to skip (e.g. "*.md,*.lock")
+    required: false
+    default: "*.md,*.lock,*.json,dist/**"
+  max_files:
+    description: Max number of files to review per PR
+    required: false
+    default: "20"
+  post_summary:
+    description: Post an overall PR summary comment
+    required: false
+    default: "true"
+
+runs:
+  using: node20
+  main: dist/index.js
+
+branding:
+  icon: code
+  color: purple
